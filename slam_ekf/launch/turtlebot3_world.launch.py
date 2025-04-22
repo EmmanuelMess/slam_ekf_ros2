@@ -43,13 +43,14 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(pkg_gazebo_ros, 'launch', 'gzserver.launch.py')
         ),
-        launch_arguments={'world': world}.items()
+        launch_arguments={'world': world, "verbose": "true"}.items()
     )
 
     gzclient_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')
-        )
+        ),
+        launch_arguments={"verbose": "true"}.items()
     )
 
     robot_state_publisher_cmd = IncludeLaunchDescription(
